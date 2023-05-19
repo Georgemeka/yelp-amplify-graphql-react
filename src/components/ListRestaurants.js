@@ -5,7 +5,7 @@ import { listRestaurants } from "../graphql/queries";
 import { deleteRestaurant } from '../graphql/mutations'
 import { useEffect, useState } from "react";
 
-const ListRestaurants = () => {
+export default function ListRestaurants() {
     const [data, setData] = useState([]);
 
     const handleDelete = async (restaurant) => {
@@ -65,4 +65,4 @@ const ListRestaurants = () => {
         </div>
     );
 };
-export default ListRestaurants;
+

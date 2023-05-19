@@ -17,6 +17,12 @@
       },
       "auth": {
         "graphqlplayground7215df6d": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d376z88j67guw7",
+          "type": "manual"
+        }
       }
     }
   }

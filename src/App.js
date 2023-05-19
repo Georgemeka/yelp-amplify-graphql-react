@@ -2,7 +2,7 @@ import { Amplify } from "aws-amplify";
 import "./App.css";
 import { Authenticator, Image, View, useTheme } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import myImage from './images/yelp.png'
+import yelpImage from './images/yelp.png'
 import awsExports from "./aws-exports";
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -12,7 +12,7 @@ Amplify.configure(awsExports);
 
 export default function App() {
 
-  const components = {
+  const myComponent = {
     Header() {
       const { tokens } = useTheme();
 
@@ -20,7 +20,7 @@ export default function App() {
         <View textAlign="center" padding={tokens.space.large}>
           <Image
             alt="yelp logo"
-            src={myImage}
+            src={yelpImage}
             width="300px"
           />
         </View>
@@ -28,12 +28,8 @@ export default function App() {
     }
   }
 
-
-
-
-
   return (
-    <Authenticator components={components} >
+    <Authenticator components={myComponent} >
       {({ signOut, user }) => (
         <main>
           <div>
@@ -57,71 +53,3 @@ export default function App() {
     </Authenticator>
   );
 }
-
-
-
-
-
-
-
-
-
-// import './App.css';
-// import { useEffect } from 'react';
-
-
-// import { listRestaurants } from './graphql/queries';
-
-// import { createRestaurant } from './graphql/mutations'
-// import { onCreateRestaurant } from './graphql/subscriptions'
-
-// import { API, Amplify } from 'aws-amplify';
-// import awsconfig from './aws-exports';
-// Amplify.configure(awsconfig);
-
-// function App() {
-//   useEffect(() => {
-//     const pullData = async () => {
-//       const data = await API.graphql({ query: listRestaurants })
-//       console.log(data);
-//     }
-//     pullData()
-
-//     const subscription = API.graphql(
-//       { query: onCreateRestaurant }
-//     ).subscribe({
-//       next: restaurantData => {
-//         pullData()
-//       },
-//       error: (err) => {
-//         console.log(err)
-//       }
-//     })
-
-//     return () => subscription.unsubscribe()
-
-//   }, [])
-
-//   const createNewRestaurant = async () => {
-
-//     const name = prompt("Enter the name of your Recipe")
-//     const description = prompt("Enter the description of your Restaurant")
-//     const city = prompt("Enter the city of your Recipe")
-
-
-//     const newRestaurant = await API.graphql({
-//       query: createRestaurant,
-//       variables: { input: { name, description, city } }
-//     })
-
-//     return newRestaurant
-
-//   }
-//   return (
-//     <div className="App">
-//       <button onClick={createNewRestaurant}><b>CREATE RECIPE</b></button>
-//     </div>
-//   );
-// }
-
-// export default App;
